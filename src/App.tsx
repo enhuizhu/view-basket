@@ -1,25 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.scss';
+import { Header } from './components/Header';
+import { BasketContext } from './contexts'
+import { useBasket } from './hooks';
+import { Divider } from './components/Divider'
+import { Panel } from './components/Panel';
+import { ProductsTable } from './components/ProductsTable';
+import { StyledContainer } from './App.style';
 
 function App() {
+  const basket = useBasket();
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BasketContext.Provider value={{...basket}}>
+      <StyledContainer>
+        <Header/>
+        <Divider />
+        <Panel title="Review Your Order">
+          <ProductsTable />
+        </Panel>
+      </StyledContainer>
+    </BasketContext.Provider>
   );
 }
 
