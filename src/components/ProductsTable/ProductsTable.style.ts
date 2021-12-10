@@ -14,6 +14,6 @@ export const StyledTable = styled.table`
   }
 
   thead tr, tr:nth-child(even) {
-    background: ${({theme}) => theme.colors.grey};
+    background: ${({theme}) => theme.colors.lightGrey};
   }
 `;

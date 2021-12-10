@@ -5,11 +5,13 @@ import { Button } from '../Button';
 interface NumberInputProps {
   value: number
   onValueChange(value: number): any
+  testid: any
 }
 
 export const NumberInput: FC<NumberInputProps> = ({
   value,
   onValueChange = () => {},
+  testid,
 }) => {
   return <StyledNumberInput>
     <input type='number' value={value} onChange={(e) => {
@@ -17,12 +19,12 @@ export const NumberInput: FC<NumberInputProps> = ({
     }}/>
 
     <StyledButtons>
+      <Button type="warn" onClick={() => {
+        onValueChange(value - 1);
+      }} data-testid={`reduce-${testid}`}>-</Button>
       <Button onClick={() => {
         onValueChange(value + 1);
-      }}>+</Button>
-      <Button onClick={() => {
-        onValueChange(value - 1);
-      }}>-</Button>
+      }} data-testid={`plus-${testid}`}>+</Button>
     </StyledButtons>
   </StyledNumberInput>
 }

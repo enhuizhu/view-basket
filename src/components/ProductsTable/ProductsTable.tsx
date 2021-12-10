@@ -31,10 +31,11 @@ export const ProductsTable = () => {
                 onValueChange={(value) => {
                   updateQuantity(item.id, value);
                 }}
+                testid={`${item.id}`}
               />
             </td>
-            <td>{currencyFormat(item.price * item.quantity)}</td>
-            <td><Button type='danger' onClick={() => {
+            <td data-testid={`cost-${item.id}`}>{currencyFormat(item.price * item.quantity)}</td>
+            <td><Button type='danger' data-testid={`delete-${item.id}`} onClick={() => {
               deleteProduct(item.id);
             }}>Delete</Button></td>
           </tr>
